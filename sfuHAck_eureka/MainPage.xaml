@@ -19,44 +19,35 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <StackPanel>
+            <!--TitlePanel contains the name of the application and page title-->
+            <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+                <TextBlock Text="Welcome" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+                <TextBlock Text="Eureka" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Height="98"/>
+            </StackPanel>
+            <Grid x:Name="ButtonPanel" Height="183">
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Host Name:"  
+               VerticalAlignment="Center" HorizontalAlignment="Center" 
+               FontSize="{StaticResource PhoneFontSizeNormal}" Margin="26,10,350,146" RenderTransformOrigin="0.024,0.5" />
+                <Button x:Name="Button" Content="Camera" HorizontalAlignment="Left" Margin="10,109,0,0" VerticalAlignment="Top" Click="CameraButtonPressed" Width="130"/>
+                <Button x:Name="Button3" Content="Query" HorizontalAlignment="Right" Click="inquireButtonPressed" Width="130" Margin="0,109,172,0" />
+                <TextBox x:Name="txtRemoteHost" HorizontalAlignment="Left" Height="72" 
+                         Margin="10,37,0,0" TextWrapping="Wrap" Text="d207-023-206-065.wireless.sfu.ca" VerticalAlignment="Top" Width="456"/>
+                <Button x:Name ="Button2" Content="Result" HorizontalAlignment="Left" Margin="333,109,0,0" VerticalAlignment="Top" Width="130" Click="Button_Click" Height="74"/>
+            </Grid>
 
-        <!-- LOCALIZATION NOTE:
-            To localize the displayed strings copy their values to appropriately named
-            keys in the app's neutral language resource file (AppResources.resx) then
-            replace the hard-coded text value between the attributes' quotation marks
-            with the binding clause whose path points to that string name.
+            <!--ContentPanel - place additional content here-->
 
-            For example:
+            <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 
-                Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
-
-            This binding points to the template's string resource named "ApplicationTitle".
-
-            Adding supported languages in the Project Properties tab will create a
-            new resx file per language that can carry the translated values of your
-            UI strings. The binding in these examples will cause the value of the
-            attributes to be drawn from the .resx file that matches the
-            CurrentUICulture of the app at run time.
-         -->
-
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
-            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            </Grid>
+            <Image x:Name="Photo" Visibility="Collapsed"/>
         </StackPanel>
-
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-
-        </Grid>
-
-        <!--Uncomment to see an alignment grid to help ensure your controls are
-            aligned on common boundaries.  The image has a top margin of -32px to
-            account for the System Tray. Set this to 0 (or remove the margin altogether)
-            if the System Tray is hidden.
-
-            Before shipping remove this XAML and the image itself.-->
-        <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
+        <Canvas HorizontalAlignment="Left" Height="424" Grid.Row="1" VerticalAlignment="Top" 
+                Width="480" Margin="0,0,0,-2">
+            <Canvas.Background>
+                <VideoBrush x:Name="viewfinderBrush" />
+            </Canvas.Background>
+        </Canvas>
     </Grid>
-
 </phone:PhoneApplicationPage>
